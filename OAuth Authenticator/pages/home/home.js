@@ -4,17 +4,20 @@
     WinJS.UI.Pages.define("/pages/home/home.html", {
         // This function is called whenever a user navigates to this page. It
         // populates the page elements with the app's data.
+        //This is an auto generated function made by the solution
         ready: function (element, options) {
             // TODO: Initialize the page here.
             WinJS.Utilities.query("a").listen("click", this.linkClickEventHandler, false);
             fnStartInterval();
         },
 
+        //This is an auto generated function made by the solution
         unload: function () {
             // TODO: Respond to navigations away from this page.
             fnStopInterval();
         },
 
+        //This is an auto generated function made by the solution
         linkClickEventHandler: function (eventInfo) {
             eventInfo.preventDefault();
             var link = eventInfo.target;
@@ -35,13 +38,14 @@
     //create list view object
     var list = [];
     var dataList = new WinJS.Binding.List(list); // listview object
-    var displayList = WinJS.Binding.as(dataList); // bind listview object to an observable object to update text
+    var displayList = WinJS.Binding.as(dataList); // bind listview object to an observable object to update text, this step needs done before mking public
     var publicMembers = //expose listview object as a public member
     {
         itemList: displayList
     };
     WinJS.Namespace.define("DataExample", publicMembers);
 
+    //Timer start function
     function fnStartInterval() {
         if (oInterval == "") {
             oInterval = window.setInterval(refresh, 100);
@@ -50,6 +54,9 @@
         }
     }
 
+    //Time stop function, the timer needs to stop when the home page is navigated away from
+    //The refresh function above will keep moving despite the page not being in focus. 
+    //This will cause issues with how it is used in this application
     function fnStopInterval() {
         if (oInterval != "") {
             window.clearInterval(oInterval);
@@ -57,6 +64,7 @@
         }
     }
 
+    //This function will refresh and update the 2 step codes every 30 seconds
     function refresh() {
         systemTime = Math.floor(new Date().getTime() / 1000);
         if (window.focus)
@@ -76,6 +84,10 @@
         }
     }
 
+    //This function generates the one time password
+    //This should be considered a black box function
+    //It is provided by Google under the Apache license
+    //This function assumes the epoch time is based on Unix time
     function totp(K, t) {
         function sha1(C) {
             function L(x, b) { return x << b | x >>> 32 - b; }
@@ -106,6 +118,7 @@
         return ((s[o >> 2] << 8 * (o & 3) | (o & 3 ? s[(o >> 2) + 1] >>> 8 * (4 - o & 3) : 0)) & -1 >>> 1) % 1000000;
     }
 
+    //Updates the one time passcodes when needed
     function updateList() {
         displayList.length = 0;
         for (var x = 0; x < secretKeys.length; x++) {
@@ -113,13 +126,15 @@
         }
     }
 
+    //Pulls the credentials from the secure password vault and pushes them to an array for processing
+    //and list view generation
     function generateListArray() {
         secretKeys.length = 0;
         keyLabels.length = 0;
         accountLabels.length = 0;
-        var vault = new Windows.Security.Credentials.PasswordVault();
-        var creds = vault.retrieveAll();
-        for (var x = 0; x < creds.size; x++) {
+        var vault = new Windows.Security.Credentials.PasswordVault(); //Creates password vault object
+        var creds = vault.retrieveAll(); //Retrieves all credentials from the vault
+        for (var x = 0; x < creds.size; x++) { //Pulls each credential out and stores each piece into an array for processing
             var cred = vault.retrieve(creds.getAt(x).resource, creds.getAt(x).userName);
             secretKeys.push(cred.password.toString());
             keyLabels.push(cred.userName.toString());
