@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "OAuth Authenticator", "OAuth Authenticator\OAuth Authenticator.jsproj", "{B965916C-9BBF-4CBF-A2CF-44FCCE75AA22}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM = Debug|ARM
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|ARM = Release|ARM
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B965916C-9BBF-4CBF-A2CF-44FCCE75AA22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B965916C-9BBF-4CBF-A2CF-44FCCE75AA22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B965916C-9BBF-4CBF-A2CF-44FCCE75AA22}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{B965916C-9BBF-4CBF-A2CF-44FCCE75AA22}.Debug|ARM.ActiveCfg = Debug|ARM
+		{B965916C-9BBF-4CBF-A2CF-44FCCE75AA22}.Debug|ARM.Build.0 = Debug|ARM
+		{B965916C-9BBF-4CBF-A2CF-44FCCE75AA22}.Debug|ARM.Deploy.0 = Debug|ARM
+		{B965916C-9BBF-4CBF-A2CF-44FCCE75AA22}.Debug|x64.ActiveCfg = Debug|x64
+		{B965916C-9BBF-4CBF-A2CF-44FCCE75AA22}.Debug|x64.Build.0 = Debug|x64
+		{B965916C-9BBF-4CBF-A2CF-44FCCE75AA22}.Debug|x64.Deploy.0 = Debug|x64
+		{B965916C-9BBF-4CBF-A2CF-44FCCE75AA22}.Debug|x86.ActiveCfg = Debug|x86
+		{B965916C-9BBF-4CBF-A2CF-44FCCE75AA22}.Debug|x86.Build.0 = Debug|x86
+		{B965916C-9BBF-4CBF-A2CF-44FCCE75AA22}.Debug|x86.Deploy.0 = Debug|x86
+		{B965916C-9BBF-4CBF-A2CF-44FCCE75AA22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B965916C-9BBF-4CBF-A2CF-44FCCE75AA22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B965916C-9BBF-4CBF-A2CF-44FCCE75AA22}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{B965916C-9BBF-4CBF-A2CF-44FCCE75AA22}.Release|ARM.ActiveCfg = Release|ARM
+		{B965916C-9BBF-4CBF-A2CF-44FCCE75AA22}.Release|ARM.Build.0 = Release|ARM
+		{B965916C-9BBF-4CBF-A2CF-44FCCE75AA22}.Release|ARM.Deploy.0 = Release|ARM
+		{B965916C-9BBF-4CBF-A2CF-44FCCE75AA22}.Release|x64.ActiveCfg = Release|x64
+		{B965916C-9BBF-4CBF-A2CF-44FCCE75AA22}.Release|x64.Build.0 = Release|x64
+		{B965916C-9BBF-4CBF-A2CF-44FCCE75AA22}.Release|x64.Deploy.0 = Release|x64
+		{B965916C-9BBF-4CBF-A2CF-44FCCE75AA22}.Release|x86.ActiveCfg = Release|x86
+		{B965916C-9BBF-4CBF-A2CF-44FCCE75AA22}.Release|x86.Build.0 = Release|x86
+		{B965916C-9BBF-4CBF-A2CF-44FCCE75AA22}.Release|x86.Deploy.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
