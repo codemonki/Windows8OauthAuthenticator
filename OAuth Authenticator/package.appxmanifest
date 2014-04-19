@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
-  <Identity Name="b965916c-9bbf-4cbf-a2cf-44fcce75aa22" Version="1.0.0.0" Publisher="CN=Jon" />
+  <Identity Name="38818Kurieus.OuthAuthenticatorOpenSource" Version="1.1.0.1" Publisher="CN=1C25B824-3B83-4DEC-B4A8-12713302A11E" />
   <Properties>
-    <DisplayName>OAuth Authenticator</DisplayName>
-    <PublisherDisplayName>Jon</PublisherDisplayName>
+    <DisplayName>Outh Authenticator (Open Source)</DisplayName>
+    <PublisherDisplayName>Kurieus</PublisherDisplayName>
     <Logo>images\StoreLogo.png</Logo>
   </Properties>
   <Prerequisites>
@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" StartPage="default.html">
-      <m2:VisualElements DisplayName="Outh Authenticator (Open Source) " Description="OAuth Authenticator (Open Source)" ForegroundText="light" BackgroundColor="#464646" Square150x150Logo="images\Square150x150Logo.png" Square30x30Logo="images\SmallLogo.png" ToastCapable="false">
+      <m2:VisualElements DisplayName="OAuth Authenticator (Open Source)" Description="OAuth Authenticator (Open Source)" ForegroundText="light" BackgroundColor="#464646" Square150x150Logo="images\Square150x150Logo.png" Square30x30Logo="images\SmallLogo.png" ToastCapable="false">
         <m2:DefaultTile Square310x310Logo="images\Square310x310Logo.png" Wide310x150Logo="images\Wide310x150Logo.png" Square70x70Logo="images\Square70x70Logo.png" DefaultSize="wide310x150Logo">
         </m2:DefaultTile>
         <m2:SplashScreen Image="images\splashscreen.png" />

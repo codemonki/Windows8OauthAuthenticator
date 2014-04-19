@@ -49,7 +49,10 @@
     <RequiredPlatformVersion>8.1</RequiredPlatformVersion>
     <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
-    <PackageCertificateKeyFile>OAuth Authenticator_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>OAuth Authenticator_StoreKey.pfx</PackageCertificateKeyFile>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundlePlatforms>neutral</AppxBundlePlatforms>
+    <PackageCertificateThumbprint>E90AA38A87B3E0305A16070AAB0140EC8929BB3A</PackageCertificateThumbprint>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="package.appxmanifest">
@@ -69,6 +72,8 @@
     <Content Include="images\Wide310x150Logo.scale-100.png" />
     <Content Include="js\default.js" />
     <Content Include="js\navigator.js" />
+    <None Include="Package.StoreAssociation.xml" />
+    <None Include="OAuth Authenticator_StoreKey.pfx" />
     <Content Include="pages\About\About.html" />
     <Content Include="pages\About\About.js" />
     <Content Include="pages\home\home.html" />
