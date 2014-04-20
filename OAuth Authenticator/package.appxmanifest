@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" StartPage="default.html">
-      <m2:VisualElements DisplayName="OAuth Authenticator (Open Source)" Description="OAuth Authenticator (Open Source)" ForegroundText="light" BackgroundColor="#464646" Square150x150Logo="images\Square150x150Logo.png" Square30x30Logo="images\SmallLogo.png" ToastCapable="false">
+      <m2:VisualElements DisplayName="Authenticator (Open Source)" Description="OAuth Authenticator (Open Source)" ForegroundText="light" BackgroundColor="#464646" Square150x150Logo="images\Square150x150Logo.png" Square30x30Logo="images\SmallLogo.png" ToastCapable="false">
         <m2:DefaultTile Square310x310Logo="images\Square310x310Logo.png" Wide310x150Logo="images\Wide310x150Logo.png" Square70x70Logo="images\Square70x70Logo.png" DefaultSize="wide310x150Logo">
         </m2:DefaultTile>
         <m2:SplashScreen Image="images\splashscreen.png" />
