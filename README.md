@@ -1,7 +1,7 @@
 Windows8OauthAuthenticator
 ==========================
 
-Windows 8 authenticator is an open source tool to authenticator Oauth tokens for 2-step authentication. 
+Windows 8 authenticator is an open source tool for 2-step authentication. 
 
 What Authenticator?
 
