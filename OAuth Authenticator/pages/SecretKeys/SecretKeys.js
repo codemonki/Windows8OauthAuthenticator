@@ -31,26 +31,20 @@
             } else {
                 //If all three fields do contain information, proceed
                 //Get the values from the input boxes
-                var secretKey = document.getElementById("secretKey").value;
-                var label = document.getElementById("keyLabel").value;
-                var account = document.getElementById("accountLabel").value;
-
-                //Convert the above values to more readible variables - this step can be deleted but is left for readability
-                //if deleted, change variables names in the 'cred' variable declaration
-                var password = secretKey;
-                var resource = account;
-                var userName = label;
+                var password = document.getElementById("secretKey").value; //The secret key
+                var userName = document.getElementById("keyLabel").value; //General label, Gmail, Dropbox, etc...
+                var resource = document.getElementById("accountLabel").value; //Account label, email address
 
                 //Create an object for the password vault where account information and tokens are saved
                 //To read more about this process, follow the link below
                 //http://code.msdn.microsoft.com/windowsapps/PasswordVault-f01be74a/sourcecode?fileId=43888&pathId=1139833673
                 var vault = new Windows.Security.Credentials.PasswordVault(); //Password vault object
-                var cred = new Windows.Security.Credentials.PasswordCredential(resource, userName, password); //The security credential (password, usern name)
+                var cred = new Windows.Security.Credentials.PasswordCredential(resource, userName, password); //The security credential itself(password, usern name)
                 vault.add(cred); //Add the credential to the security vault
 
                 //This pushes a flag variable to open storage. This will be used on the home page to see if any dcredentials 
                 //have been created by this app. 
-                Windows.Storage.ApplicationData.current.localSettings.values["dataExists"] = JSON.stringify(true);
+                Windows.Storage.ApplicationData.current.localSettings.values["dataExists"] = "true";
 
                 //Clear text boxes
                 document.getElementById("secretKey").value = "";

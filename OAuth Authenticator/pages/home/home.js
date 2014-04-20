@@ -48,7 +48,7 @@
     //Timer start function
     function fnStartInterval() {
         if (oInterval == "") {
-            oInterval = window.setInterval(refresh, 100);
+            oInterval = window.setInterval(refresh, 1000);
         } else {
             fnStopInterval();
         }
@@ -67,8 +67,9 @@
     //This function will refresh and update the 2 step codes every 30 seconds
     function refresh() {
         systemTime = Math.floor(new Date().getTime() / 1000);
-        if (window.focus)
+        if (window.focus) {
             document.getElementById('timeLeft').innerHTML = Math.floor(systemTime % 30);
+        }
         if (Windows.Storage.ApplicationData.current.localSettings.values["dataExists"]) {
             t = Math.floor(systemTime / 30);
             if (t != lasttimestamp) {
@@ -88,6 +89,7 @@
     //This should be considered a black box function
     //It is provided by Google under the Apache license
     //This function assumes the epoch time is based on Unix time
+    //Function provided by https://code.google.com/p/google-authenticator/source/browse/libpam/totp.html
     function totp(K, t) {
         function sha1(C) {
             function L(x, b) { return x << b | x >>> 32 - b; }
