@@ -3,8 +3,8 @@
 
     // Global function Variables
     var systemTime;
-    var t;
-    var oInterval = "";
+    var currentTime;
+    var intervalID = "";
     var lasttimestamp;
     var secretKeys = [];
     var keyLabels = [];
@@ -16,13 +16,11 @@
     var list = [];
     var dataList = new WinJS.Binding.List(list); // listview object
     var displayList = WinJS.Binding.as(dataList); // bind listview object to an observable object to update text, this step needs done before making public
-
-    // expose listview object as a public member
     var publicMembers =
     {
         itemList: displayList
     };
-    WinJS.Namespace.define("ListView", publicMembers);
+    WinJS.Namespace.define("ListView", publicMembers); // expose listview object as a public member
 
     //Page control functions
     WinJS.UI.Pages.define("/pages/home/home.html", {
@@ -61,20 +59,20 @@
 
     //Timer start function
     function fnStartInterval() {
-        if (oInterval == "") {
-            oInterval = window.setInterval(refresh, 1000);
+        if (intervalID == "") {
+            intervalID = window.setInterval(refresh, 1000);
         } else {
             fnStopInterval();
         }
     }
 
-    // Time stop function, the timer needs to stop when the home page is navigated away from
-    // The refresh function above will keep moving despite the page not being in focus. 
-    // This will cause issues with how it is used in this application
+    // Timer stop function
+    // The timer continues to run when the user navigates away from the home page
+    // thus we need to stop it or else it will produce errors
     function fnStopInterval() {
-        if (oInterval != "") {
-            window.clearInterval(oInterval);
-            oInterval = "";
+        if (intervalID != "") {
+            window.clearInterval(intervalID);
+            intervalID = "";
         }
     }
 
@@ -85,13 +83,13 @@
             document.getElementById('timeLeft').innerHTML = Math.floor(systemTime % 30);
         }
         if (Windows.Storage.ApplicationData.current.localSettings.values["dataExists"]) {
-            t = Math.floor(systemTime / 30);
-            if (t != lasttimestamp) {
+            currentTime = Math.floor(systemTime / 30);
+            if (currentTime != lasttimestamp) {
                 generateListArray()
                 for (var x = 0; x < secretKeys.length; x++) {
-                    var k = secretKeys[x].replace(/[^ABCDEFGHIJKLMNOPQRSTUVWXYZ234567]/gi, '');
-                    lasttimestamp = t;
-                    var code = totp(k, t);
+                    var key = secretKeys[x].replace(/[^ABCDEFGHIJKLMNOPQRSTUVWXYZ234567]/gi, '');
+                    lasttimestamp = currentTime;
+                    var code = totp(key, currentTime);
                     secretKeys[x] = code;
                     updateList();
                 }
@@ -100,10 +98,8 @@
     }
 
     // This function generates the one time password
-    // This should be considered a black box function
     // It is provided by Google under the Apache license
-    // This function assumes the epoch time is based on Unix time
-    //Function provided by https://code.google.com/p/google-authenticator/source/browse/libpam/totp.html
+    // https://code.google.com/p/google-authenticator/source/browse/libpam/totp.html
     function totp(K, t) {
         function sha1(C) {
             function L(x, b) { return x << b | x >>> 32 - b; }
@@ -191,6 +187,7 @@
         generateListArray();
         updateList();
     }
+    // End context menu functions
 })();
 
 

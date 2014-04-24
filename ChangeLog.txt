@@ -1,6 +1,13 @@
 4-24-14
+-renamed variables for clarity
+-changed comments for clarity
+-removed ability to perform selection on one time passwords
+-fixed selection to resolve delete and copy functions
+
+4-24-14
 V1.1.0.4 release
--Changed event handler for keys from "contextmenu" to "click" to enable touch support. The contextmenu type was causing issues with touch input in the list view.
+-changed event handler for keys from "contextmenu" to "click" to enable touch support. The contextmenu type was causing issues with touch input in the list view.
+-broke selection and delete function
 
 4-23-14
--Added copy and delete context menus for right click mouse support
+-added copy and delete context menus for right click mouse support

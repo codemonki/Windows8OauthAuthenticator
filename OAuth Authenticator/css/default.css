@@ -60,24 +60,13 @@
 }
 
 /*Listview*/
-.win-listview {
-    width: 70%;
-    height: 90%;
+.account {
+    float: right;
 }
 
 .accountLabels {
     width: 100%;
     border-top: 1px solid red;
-}
-
-.label {
-    float: left;
-    font-size: 20px;
-    font-style: italic;
-}
-
-.account {
-    float: right;
 }
 
 .key {
@@ -87,4 +76,26 @@
     font-size: 40px;
 }
 
-/*Secret keys tablet layout*/
+.label {
+    float: left;
+    font-size: 20px;
+    font-style: italic;
+}
+
+#OauthCodes {
+    background: red;
+    border: 1px solid red;
+}
+
+.win-listview {
+    width: 70%;
+    height: 90%;
+}
+
+/*Secret keys page*/
+
+/*About Page page*/
+#about {
+    padding: 20px 20px 20px 20px;
+}
+

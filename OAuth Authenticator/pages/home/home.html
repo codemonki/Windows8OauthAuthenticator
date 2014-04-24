@@ -19,7 +19,7 @@
         <header aria-label="Header content" role="banner">
             <button data-win-control="WinJS.UI.BackButton"></button>
             <h1 class="titlearea win-type-ellipsis">
-                <span class="pagetitle">Authenticator</span>
+                <span class="pagetitle">Authenticator (Open Source)</span>
             </h1>
         </header>
 
@@ -33,8 +33,21 @@
             <!--list template-->
             <div id="OauthCodes" data-win-control="WinJS.Binding.Template">
                 <div class="accountLabels">
-                    <div class="label" data-win-bind="innerText: Label"></div><div class="account" data-win-bind="innerText: Account"></div>
-                    <div class="key" data-win-bind="innerText: Key"></div> 
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="label" data-win-bind="innerText: Label">
+                            </td>
+                            <td>
+                                <div class="account" data-win-bind="innerText: Account"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="key" data-win-bind="innerText: Key"></div>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
 
@@ -43,6 +56,7 @@
                  data-win-control="WinJS.UI.ListView"
                  data-win-options="{ itemDataSource : ListView.itemList.dataSource,
                  selectionMode: 'single',
+                 tapBehavior: 'toggleSelect',
                  itemTemplate: select('#OauthCodes') }">
             </div>
         </section>
