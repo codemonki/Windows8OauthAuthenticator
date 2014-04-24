@@ -1,2 +1,6 @@
+4-24-14
+V1.1.0.4 release
+-Changed event handler for keys from "contextmenu" to "click" to enable touch support. The contextmenu type was causing issues with touch input in the list view.
+
 4-23-14
 -Added copy and delete context menus for right click mouse support

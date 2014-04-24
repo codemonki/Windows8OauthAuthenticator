@@ -1,3 +1,3 @@
-MainPackage=C:\Users\Jon\Documents\Visual Studio 2013\Projects\OAuth Authenticator\OAuth Authenticator\bin\Release\OAuth Authenticator_1.1.0.2_Bundle\OAuth Authenticator_1.1.0.2_AnyCPU.appx
-ResourcePack=C:\Users\Jon\Documents\Visual Studio 2013\Projects\OAuth Authenticator\OAuth Authenticator\bin\Release\OAuth Authenticator_1.1.0.2_Bundle\OAuth Authenticator_1.1.0.2_scale-140.appx
-ResourcePack=C:\Users\Jon\Documents\Visual Studio 2013\Projects\OAuth Authenticator\OAuth Authenticator\bin\Release\OAuth Authenticator_1.1.0.2_Bundle\OAuth Authenticator_1.1.0.2_scale-180.appx
+MainPackage=C:\Users\Jon\Documents\Visual Studio 2013\Projects\OAuth Authenticator\OAuth Authenticator\bin\Release\OAuth Authenticator_1.1.0.4_Bundle\OAuth Authenticator_1.1.0.4_AnyCPU.appx
+ResourcePack=C:\Users\Jon\Documents\Visual Studio 2013\Projects\OAuth Authenticator\OAuth Authenticator\bin\Release\OAuth Authenticator_1.1.0.4_Bundle\OAuth Authenticator_1.1.0.4_scale-140.appx
+ResourcePack=C:\Users\Jon\Documents\Visual Studio 2013\Projects\OAuth Authenticator\OAuth Authenticator\bin\Release\OAuth Authenticator_1.1.0.4_Bundle\OAuth Authenticator_1.1.0.4_scale-180.appx

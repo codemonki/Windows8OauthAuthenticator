@@ -15,16 +15,14 @@
     var listViewSelection;
     var list = [];
     var dataList = new WinJS.Binding.List(list); // listview object
-    var displayList = WinJS.Binding.as(dataList); // bind listview object to an observable object to update text, this step needs done before mking public
+    var displayList = WinJS.Binding.as(dataList); // bind listview object to an observable object to update text, this step needs done before making public
 
     // expose listview object as a public member
-    var publicMembers = 
+    var publicMembers =
     {
         itemList: displayList
     };
     WinJS.Namespace.define("ListView", publicMembers);
-
-    
 
     //Page control functions
     WinJS.UI.Pages.define("/pages/home/home.html", {
@@ -34,9 +32,9 @@
         ready: function (element, options) {
             WinJS.Utilities.query("a").listen("click", this.linkClickEventHandler, false);
             fnStartInterval();
-            
+
             // Context menu events
-            document.getElementById("basicListView").addEventListener("contextmenu", attachmentHandler, false);
+            document.getElementById("basicListView").addEventListener("click", attachmentHandler, false);
             listViewContext = element.querySelector("#basicListView").winControl;
             listViewContext.addEventListener("selectionchanged", this.selectionChanged);
         },
@@ -160,11 +158,11 @@
         }
     }
 
-    // Context menu
+    // Context menu functions
     function attachmentHandler(e) {
         // Create a menu and add commands with callbacks. 
         var menu = new Windows.UI.Popups.PopupMenu();
-        menu.commands.append(new Windows.UI.Popups.UICommand("Copy", copy));
+        menu.commands.append(new Windows.UI.Popups.UICommand("Copy", copyKey));
         menu.commands.append(new Windows.UI.Popups.UICommand("Delete", deleteKey));
         menu.showAsync(pageToWinRT(e.pageX, e.pageY)).then(function (invokedCommand) {
         });
@@ -178,7 +176,7 @@
         };
     }
 
-    function copy() {
+    function copyKey() {
         var dataPackage = new Windows.ApplicationModel.DataTransfer.DataPackage();
         dataPackage.setText(secretKeys[listViewSelection]);
         Windows.ApplicationModel.DataTransfer.Clipboard.setContent(dataPackage);
