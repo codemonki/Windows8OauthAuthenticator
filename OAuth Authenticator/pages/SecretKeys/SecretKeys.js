@@ -25,15 +25,15 @@
         //This function fires when the 'Submit' button is clicked
         buttonClickHandler: function (eventInfo) {
 
+            //Get the values from the input boxes
+            var password = document.getElementById("secretKey").value; //The secret key
+            var userName = document.getElementById("keyLabel").value; //General label, Gmail, Dropbox, etc...
+            var resource = document.getElementById("accountLabel").value; //Account label, email address
+
             //Check to ensure that all three fields contain information
-            if (secretKey === "" || label === "" || accountLabel === "") {
+            if (password === "" || userName === "" || resource === "") {
                 document.getElementById("test").innerHTML = "Error: All three fields need to be entered.";
-            } else {
-                //If all three fields do contain information, proceed
-                //Get the values from the input boxes
-                var password = document.getElementById("secretKey").value; //The secret key
-                var userName = document.getElementById("keyLabel").value; //General label, Gmail, Dropbox, etc...
-                var resource = document.getElementById("accountLabel").value; //Account label, email address
+            } else { //If all three fields do contain information, proceed
 
                 //Create an object for the password vault where account information and tokens are saved
                 //To read more about this process, follow the link below

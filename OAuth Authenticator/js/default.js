@@ -33,6 +33,12 @@
             });
 
             args.setPromise(p);
+            WinJS.Application.onsettings = function (e) {
+                e.detail.applicationcommands = {
+                    "privacyFlyout": { href: "pages/privacy/privacy.html", title: "Privacy" }
+                };
+                WinJS.UI.SettingsFlyout.populateSettings(e);
+            }
         }
     });
 

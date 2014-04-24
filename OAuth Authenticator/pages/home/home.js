@@ -1,32 +1,7 @@
 ﻿(function () {
     "use strict";
-    //Page control functions
-    WinJS.UI.Pages.define("/pages/home/home.html", {
-        // This function is called whenever a user navigates to this page. It
-        // populates the page elements with the app's data.
-        //This is an auto generated function made by the solution
-        ready: function (element, options) {
-            // TODO: Initialize the page here.
-            WinJS.Utilities.query("a").listen("click", this.linkClickEventHandler, false);
-            fnStartInterval();
-        },
 
-        //This is an auto generated function made by the solution
-        unload: function () {
-            // TODO: Respond to navigations away from this page.
-            fnStopInterval();
-        },
-
-        //This is an auto generated function made by the solution
-        linkClickEventHandler: function (eventInfo) {
-            eventInfo.preventDefault();
-            var link = eventInfo.target;
-            WinJS.Navigation.navigate(link.href);
-        }
-
-    }); // End page controls
-
-    //Global function Variables
+    // Global function Variables
     var systemTime;
     var t;
     var oInterval = "";
@@ -35,15 +10,56 @@
     var keyLabels = [];
     var accountLabels = [];
 
-    //create list view object
+    // create list view objects
+    var listViewContext;
+    var listViewSelection;
     var list = [];
     var dataList = new WinJS.Binding.List(list); // listview object
     var displayList = WinJS.Binding.as(dataList); // bind listview object to an observable object to update text, this step needs done before mking public
-    var publicMembers = //expose listview object as a public member
+
+    // expose listview object as a public member
+    var publicMembers = 
     {
         itemList: displayList
     };
-    WinJS.Namespace.define("DataExample", publicMembers);
+    WinJS.Namespace.define("ListView", publicMembers);
+
+    
+
+    //Page control functions
+    WinJS.UI.Pages.define("/pages/home/home.html", {
+        // This function is called whenever a user navigates to this page. It
+        // populates the page elements with the app's data.
+        // This is an auto generated function made by the solution
+        ready: function (element, options) {
+            WinJS.Utilities.query("a").listen("click", this.linkClickEventHandler, false);
+            fnStartInterval();
+            
+            // Context menu events
+            document.getElementById("basicListView").addEventListener("contextmenu", attachmentHandler, false);
+            listViewContext = element.querySelector("#basicListView").winControl;
+            listViewContext.addEventListener("selectionchanged", this.selectionChanged);
+        },
+
+        // This is an auto generated function made by the solution
+        unload: function () {
+            // TODO: Respond to navigations away from this page.
+            fnStopInterval();
+        },
+
+        // This is an auto generated function made by the solution
+        linkClickEventHandler: function (eventInfo) {
+            eventInfo.preventDefault();
+            var link = eventInfo.target;
+            WinJS.Navigation.navigate(link.href);
+        },
+
+        // Change the selection of the object selected in the listView
+        selectionChanged: function (eventInfo) {
+            listViewSelection = listViewContext.selection.getIndices();
+        }
+
+    }); // End page controls
 
     //Timer start function
     function fnStartInterval() {
@@ -54,9 +70,9 @@
         }
     }
 
-    //Time stop function, the timer needs to stop when the home page is navigated away from
-    //The refresh function above will keep moving despite the page not being in focus. 
-    //This will cause issues with how it is used in this application
+    // Time stop function, the timer needs to stop when the home page is navigated away from
+    // The refresh function above will keep moving despite the page not being in focus. 
+    // This will cause issues with how it is used in this application
     function fnStopInterval() {
         if (oInterval != "") {
             window.clearInterval(oInterval);
@@ -64,7 +80,7 @@
         }
     }
 
-    //This function will refresh and update the 2 step codes every 30 seconds
+    // This function will refresh and update the 2 step codes every 30 seconds
     function refresh() {
         systemTime = Math.floor(new Date().getTime() / 1000);
         if (window.focus) {
@@ -85,10 +101,10 @@
         }
     }
 
-    //This function generates the one time password
-    //This should be considered a black box function
-    //It is provided by Google under the Apache license
-    //This function assumes the epoch time is based on Unix time
+    // This function generates the one time password
+    // This should be considered a black box function
+    // It is provided by Google under the Apache license
+    // This function assumes the epoch time is based on Unix time
     //Function provided by https://code.google.com/p/google-authenticator/source/browse/libpam/totp.html
     function totp(K, t) {
         function sha1(C) {
@@ -120,7 +136,7 @@
         return ((s[o >> 2] << 8 * (o & 3) | (o & 3 ? s[(o >> 2) + 1] >>> 8 * (4 - o & 3) : 0)) & -1 >>> 1) % 1000000;
     }
 
-    //Updates the one time passcodes when needed
+    // Updates the one time passcodes when needed
     function updateList() {
         displayList.length = 0;
         for (var x = 0; x < secretKeys.length; x++) {
@@ -128,8 +144,8 @@
         }
     }
 
-    //Pulls the credentials from the secure password vault and pushes them to an array for processing
-    //and list view generation
+    // Pulls the credentials from the secure password vault and pushes them to an array for processing
+    // and list view generation
     function generateListArray() {
         secretKeys.length = 0;
         keyLabels.length = 0;
@@ -142,6 +158,40 @@
             keyLabels.push(cred.userName.toString());
             accountLabels.push(cred.resource.toString());
         }
+    }
+
+    // Context menu
+    function attachmentHandler(e) {
+        // Create a menu and add commands with callbacks. 
+        var menu = new Windows.UI.Popups.PopupMenu();
+        menu.commands.append(new Windows.UI.Popups.UICommand("Copy", copy));
+        menu.commands.append(new Windows.UI.Popups.UICommand("Delete", deleteKey));
+        menu.showAsync(pageToWinRT(e.pageX, e.pageY)).then(function (invokedCommand) {
+        });
+    }
+
+    function pageToWinRT(pageX, pageY) {
+        var zoomFactor = document.documentElement.msContentZoomFactor;
+        return {
+            x: (pageX - window.pageXOffset) * zoomFactor,
+            y: (pageY - window.pageYOffset) * zoomFactor
+        };
+    }
+
+    function copy() {
+        var dataPackage = new Windows.ApplicationModel.DataTransfer.DataPackage();
+        dataPackage.setText(secretKeys[listViewSelection]);
+        Windows.ApplicationModel.DataTransfer.Clipboard.setContent(dataPackage);
+        listViewContext.selection.clear();
+    }
+
+    function deleteKey() {
+        var vault = new Windows.Security.Credentials.PasswordVault(); //Creates password vault object
+        var cred = vault.retrieve(accountLabels[listViewSelection], keyLabels[listViewSelection]); //Retrieves all credentials from the vault
+        vault.remove(cred);
+        listViewContext.selection.clear();
+        generateListArray();
+        updateList();
     }
 })();
 

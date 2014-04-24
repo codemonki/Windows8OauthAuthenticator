@@ -349,13 +349,13 @@
     <Language Code="zu-za" InMinimumRequirementSet="false" />
   </SupportedLocales>
   <ProductReservedInfo>
-    <MainPackageIdentityName>38818Kurieus.OuthAuthenticatorOpenSource</MainPackageIdentityName>
+    <MainPackageIdentityName>38818Kurieus.AuthenticatorOpenSource</MainPackageIdentityName>
     <ReservedNames>
-      <ReservedName>Outh Authenticator (Open Source)</ReservedName>
+      <ReservedName>Authenticator (Open Source)</ReservedName>
     </ReservedNames>
   </ProductReservedInfo>
   <AccountPackageIdentityNames>
     <MainPackageIdentityName>38818Kurieus.TimeCrunch</MainPackageIdentityName>
   </AccountPackageIdentityNames>
-  <PackageInfoList LandingUrl="https://appdev.microsoft.com:443/StorePortals/Developer/Catalog/ReleaseAnchor/ef09c6eb-2f2b-4aaf-a558-89c036b35d1a" />
+  <PackageInfoList LandingUrl="https://appdev.microsoft.com:443/StorePortals/Developer/Catalog/ReleaseAnchor/e299a743-b066-4b75-be37-619ee448a988" />
 </StoreAssociation>
