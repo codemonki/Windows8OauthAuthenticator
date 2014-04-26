@@ -37,7 +37,9 @@
             //Privacy link in charms->settings
             WinJS.Application.onsettings = function (e) {
                 e.detail.applicationcommands = {
-                    "privacyFlyout": { href: "pages/privacy/privacy.html", title: "Privacy" }
+                    "privacyFlyout": { href: "pages/privacy/privacyFlyout.html", title: "Privacy" },
+                    "aboutFlyout" : {href: "pages/About/aboutFlyout.html", title: "About"}
+
                 };
                 WinJS.UI.SettingsFlyout.populateSettings(e);
             }

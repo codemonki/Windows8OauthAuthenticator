@@ -2,6 +2,7 @@
     "use strict";
 
     // Global function Variables
+    var countDownTimer;
     var systemTime;
     var currentTime;
     var intervalID = "";
@@ -80,19 +81,15 @@
     function refresh() {
         systemTime = Math.floor(new Date().getTime() / 1000);
         if (window.focus) {
-            document.getElementById('timeLeft').innerHTML = Math.floor(systemTime % 30);
+            timer();
+            //document.getElementById('timeLeft').innerHTML = Math.floor(systemTime % 30);
+            document.getElementById('timeLeft').innerHTML = countDownTimer;
         }
         if (Windows.Storage.ApplicationData.current.localSettings.values["dataExists"]) {
             currentTime = Math.floor(systemTime / 30);
             if (currentTime != lasttimestamp) {
-                generateListArray()
-                for (var x = 0; x < secretKeys.length; x++) {
-                    var key = secretKeys[x].replace(/[^ABCDEFGHIJKLMNOPQRSTUVWXYZ234567]/gi, '');
-                    lasttimestamp = currentTime;
-                    var code = totp(key, currentTime);
-                    secretKeys[x] = code;
-                    updateList();
-                }
+                lasttimestamp = currentTime;
+                generateKeys()
             }
         }
     }
@@ -130,6 +127,16 @@
         return ((s[o >> 2] << 8 * (o & 3) | (o & 3 ? s[(o >> 2) + 1] >>> 8 * (4 - o & 3) : 0)) & -1 >>> 1) % 1000000;
     }
 
+    function generateKeys() {
+        generateListArray()
+        for (var x = 0; x < secretKeys.length; x++) {
+            var key = secretKeys[x].replace(/[^ABCDEFGHIJKLMNOPQRSTUVWXYZ234567]/gi, '');
+            var code = totp(key, currentTime);
+            secretKeys[x] = code;
+            updateList();
+        }
+    }
+
     // Updates the one time passcodes when needed
     function updateList() {
         displayList.length = 0;
@@ -151,6 +158,107 @@
             secretKeys.push(cred.password.toString());
             keyLabels.push(cred.userName.toString());
             accountLabels.push(cred.resource.toString());
+        }
+    }
+
+    function timer() {
+        countDownTimer = Math.floor(systemTime % 30);
+        switch (countDownTimer) {
+            case 0:
+                countDownTimer = 30;
+                break;
+            case 1:
+                countDownTimer = 29;
+                break;
+            case 2:
+                countDownTimer = 28;
+                break;
+            case 3:
+                countDownTimer = 27;
+                break;
+            case 4:
+                countDownTimer = 26;
+                break;
+            case 5:
+                countDownTimer = 25;
+                break;
+            case 6:
+                countDownTimer = 24;
+                break;
+            case 7:
+                countDownTimer = 23;
+                break;
+            case 8:
+                countDownTimer = 22;
+                break;
+            case 9:
+                countDownTimer = 21;
+                break;
+            case 10:
+                countDownTimer = 20;
+                break;
+            case 11:
+                countDownTimer = 19;
+                break;
+            case 12:
+                countDownTimer = 18;
+                break;
+            case 13:
+                countDownTimer = 17;
+                break;
+            case 14:
+                countDownTimer = 16;
+                break;
+            case 15:
+                countDownTimer = 15;
+                break;
+            case 16:
+                countDownTimer = 14;
+                break;
+            case 17:
+                countDownTimer = 13;
+                break;
+            case 18:
+                countDownTimer = 12;
+                break;
+            case 19:
+                countDownTimer = 11;
+                break;
+            case 20:
+                countDownTimer = 10;
+                break;
+            case 21:
+                countDownTimer = 9;
+                break;
+            case 22:
+                countDownTimer = 8;
+                break;
+            case 23:
+                countDownTimer = 7;
+                break;
+            case 24:
+                countDownTimer = 6;
+                break;
+            case 25:
+                countDownTimer = 5;
+                break;
+            case 26:
+                countDownTimer = 4;
+                break;
+            case 27:
+                countDownTimer = 3;
+                break;
+            case 28:
+                countDownTimer = 2;
+                break;
+            case 29:
+                countDownTimer = 1;
+                break;
+            case 30:
+                countDownTimer = 0;
+                break;
+            default:
+                break;
         }
     }
 
@@ -184,8 +292,7 @@
         var cred = vault.retrieve(accountLabels[listViewSelection], keyLabels[listViewSelection]); //Retrieves all credentials from the vault
         vault.remove(cred);
         listViewContext.selection.clear();
-        generateListArray();
-        updateList();
+        generateKeys()
     }
     // End context menu functions
 })();

@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>About Authenticator (Open Source)</title>
+</head>
+<body>
+    <div id="aboutFlyout" data-win-control="WinJS.UI.SettingsFlyout" aria-label="Privacy Statement"
+         data-win-options="{settingsCommandId:'help',width:'narrow'}">
+        <div class="win-header" style="background-color:#464646">
+            <button type="button" onclick="WinJS.UI.SettingsFlyout.show()" class="win-backbutton"></button>
+            <div class="win-label">Help</div>
+            <img src="ms-appx:///images/smalllogo.png" style="position: absolute; right: 40px;" />
+        </div>
+        <div class="win-content">
+            <h2>What Authenticator?</h2>
+            <p>
+                Authenticator is a simple, open source application used for 2-step authentication on Windows 8 and Windows RT.
+                2 step authentication is used by many popular websites, such as Google, Live, and Dropbox, to enable an extra layer of security.
+            </p>
+            <h2>Why did Kurieus make this app?</h2>
+            <p>
+                Though other TOTP authenticator apps are currently published to the Windows App Store,
+                none of the other apps are released by developers with highly recognized and trusted names.
+                Because of the nature of 2 step authentication, It was felt that erring on the side of caution
+                would be best and to not use these apps. Authenticator is released to the public as a free
+                and open source application. The source code can be viewed and examined by anyone at its
+                GitHub repository. That repository is located <a href="https://github.com/mepis/Windows8OauthAuthenticator">here.</a>
+            </p>
+            <h2>How does Authenticator secure information?</h2>
+            <p>
+                Authenticator saves all secret keys in the Windows Security Credentials Password Vault.
+                More information of the Security Credentials Password Vault can be found <a href="http://windows.microsoft.com/en-us/windows7/what-is-credential-manager">here.</a>
+            </p>
+            <h2>Help and Support</h2>
+            <p>For any help, questions, or comments, please email me at <a href="http://kurie.us/contact-me/">support@kurieus.us</a></p>
+        </div>
+</body>
+</html>

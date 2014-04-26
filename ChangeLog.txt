@@ -1,7 +1,12 @@
+4-26-14
+V1.1.0.7 release
+-Changed count down timer
+-added a function to seperate key generation process from refresh loop, makes things more functional and resuable
+-moved about page to flyout section
+
 4-24-14
 -renamed variables for clarity
 -changed comments for clarity
--removed ability to perform selection on one time passwords
 -fixed selection to resolve delete and copy functions
 
 4-24-14

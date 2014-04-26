@@ -97,11 +97,10 @@
     <Content Include="js\navigator.js" />
     <None Include="Package.StoreAssociation.xml" />
     <None Include="OAuth Authenticator_StoreKey.pfx" />
-    <Content Include="pages\About\About.html" />
-    <Content Include="pages\About\About.js" />
+    <Content Include="pages\About\aboutFlyout.html" />
     <Content Include="pages\home\home.html" />
     <Content Include="pages\home\home.js" />
-    <Content Include="pages\Privacy\privacy.html" />
+    <Content Include="pages\Privacy\privacyFlyout.html" />
     <Content Include="pages\SecretKeys\SecretKeys.html" />
     <Content Include="pages\SecretKeys\SecretKeys.js" />
     <None Include="OAuth Authenticator_TemporaryKey.pfx" />

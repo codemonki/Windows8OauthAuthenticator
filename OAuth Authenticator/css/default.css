@@ -66,7 +66,7 @@
 
 .accountLabels {
     width: 100%;
-    border-top: 1px solid red;
+    padding: 5px 5px 5px 5px;
 }
 
 .key {
@@ -82,14 +82,10 @@
     font-style: italic;
 }
 
-#OauthCodes {
-    background: red;
-    border: 1px solid red;
-}
-
 .win-listview {
-    width: 70%;
+    width: 75%;
     height: 90%;
+    background-color: #151414;
 }
 
 /*Secret keys page*/
