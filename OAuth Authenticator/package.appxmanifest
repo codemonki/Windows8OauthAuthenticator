@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
-  <Identity Name="38818Kurieus.AuthenticatorOpenSource" Version="1.1.0.7" Publisher="CN=1C25B824-3B83-4DEC-B4A8-12713302A11E" />
+  <Identity Name="38818Kurieus.AuthenticatorOpenSource" Version="1.1.0.8" Publisher="CN=1C25B824-3B83-4DEC-B4A8-12713302A11E" />
   <Properties>
     <DisplayName>Authenticator (Open Source)</DisplayName>
     <PublisherDisplayName>Kurieus</PublisherDisplayName>

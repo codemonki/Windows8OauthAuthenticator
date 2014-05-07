@@ -132,6 +132,30 @@
         for (var x = 0; x < secretKeys.length; x++) {
             var key = secretKeys[x].replace(/[^ABCDEFGHIJKLMNOPQRSTUVWXYZ234567]/gi, '');
             var code = totp(key, currentTime);
+            code = code.toString();
+            switch (code.length) {
+                case 0:
+                    code = "000000";
+                    break;
+                case 1:
+                    code = "00000" + code;
+                    break;
+                case 2:
+                    code = "0000" + code;
+                    break;
+                case 3:
+                    code = "000" + code;
+                    break;
+                case 4:
+                    code = "00" + code;
+                    break;
+                case 5:
+                    code = "0" + code;
+                    break;
+                default:
+                    break;
+            }
+
             secretKeys[x] = code;
             updateList();
         }

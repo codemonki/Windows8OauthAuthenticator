@@ -1,3 +1,7 @@
+5-7-2014
+V1.1.0.8 release
+-Resolved a bug where leading zeros in the OTP where removed before being displayed
+
 4-26-14
 V1.1.0.7 release
 -Changed count down timer
